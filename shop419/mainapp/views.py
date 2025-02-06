@@ -14,4 +14,4 @@ def homeView(request):
         'product_list' : products
     }
     template = loader.get_template('home.html')
-    return HttpResponse(template.reader(context, request))
+    return HttpResponse(template.render(context, request))
