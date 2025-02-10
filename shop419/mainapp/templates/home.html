@@ -57,33 +57,25 @@
     </header>
 
     <main>
-        <div class="container-fluid">
-            <table class="table" border="3px solid" data-bs-theme="dark" bg-dark>
-                <thead>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>price</th>
-                    <th>stock</th>
-                    <th>pic</th>
-                    <th>Thumbnail</th>
-                    <th>descripiton</th>
-                    <th>add to cart</th>
-                </thead>
-                <tbody>
-                {% for product in product_list %}
-                    <tr>
-                        <td>{{product.id}}</td>
-                        <td>{{product.name}}<d>
-                        <td>{{product.price}}</td>
-                        <td>{{product.stock}}</td>
-                        <td>{{product.pic}}</td>
-                        <td><img src="{{product.pic}}" height="20px" alt=""></td>
-                        <td>{{product.desc}}</td>
-                        <td><button class="btn btn-primary">Add to Cart</button></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="container">
+            {% for product in product_list %}
+            <div class="card">
+                <div class="card-img">
+                    <img src="{{product.pic}}" alt="">
+                </div>
+                <div class="card-text">
+                    <h3>{{product.name}}</h3>
+                    <h5>Price : <ins>{{product.price}}</ins></h5>
+                    <h5>Stock : {{product.stock}}</h5>
+                    <p>
+                        {{product.desc}}
+                    </p>
+                    <button>Add to cart</button>
+                </div>
+
+            </div>
+
+             {% endfor %}
         </div>
     </main>
 
