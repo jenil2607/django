@@ -11,27 +11,22 @@ from django.http import HttpResponse
 def homeView(request):
     products = Product.objects.all()
     context = {
-        'product_list' : products
+        'product_list' : products,
+        'current_page' : 'home'
     }
     template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
 
 def aboutView(request):
     context = {
-        'name' : "Jenil",
-        'students' : [
-            "ayan",
-            "suraj",
-            "deepk"
-             ],
-        'slept' : True
+        'current_page' : 'about'
     }
     template = loader.get_template('about.html')
     return HttpResponse(template.render(context, request))
 
 def contactsView(request):
     context = {
-
+        'current_page' : 'view'
     }
     template = loader.get_template('contacts.html')
     return HttpResponse(template.render(context, request))

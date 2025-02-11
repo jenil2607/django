@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -6,29 +6,54 @@
 }
 
 body {
-  header {
-    z-index: 2;
-      height: 50px;
-      nav {
-          height: 100%;
-          div.container-fluid {
-              height: 100%;
-              a.navbar-brand {
-                  img {
-                      height: 100%;
-                      background-color: white;
-                      border-radius: 50%;
+    background-color: rgb(181, 231, 200);
 
-                  }
-               }
-          }
-      }
-  }
-  main {
+    header {
+        z-index: 2;
+        height: 50px;
 
-      margin-bottom: 200px;
-      /* margin-top: 100px; */
-      div.container {
+        nav {
+            height: 100%;
+
+            div.container-fluid {
+                height: 100%;
+
+                a.navbar-brand {
+                    img {
+                        height: 100%;
+                        background-color: rgb(112, 203, 84);
+                        border-radius: 50%;
+                    }
+
+                    color: aliceblue;
+
+
+                }
+
+                div.collapse navbar-collapse {
+                    ul.navbar-nav {
+                        li.nav-item {
+                            a.nav-link {
+                                color: aliceblue;
+
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+main {
+
+    margin-bottom: 200px;
+
+    /* margin-top: 100px; */
+    div.container {
         /* margin-top: 5%; */
         display: flex;
         flex-wrap: wrap;
@@ -39,7 +64,7 @@ body {
             height: 450px;
             width: 250px;
             margin-top: 15%;
-            box-shadow: 1px 4px 5px 2px rgb(65, 76, 32);
+            box-shadow: 1px 4px 5px 2px rgb(39, 53, 45);
             border-radius: 10px;
             overflow: hidden;
 
@@ -57,26 +82,32 @@ body {
             }
 
             div.card-text {
-                background-color: blanchedalmond;
+                background-color: rgb(65, 109, 40);
                 height: 50%;
                 text-align: center;
 
                 h3 {
                     margin-top: 1px;
                     height: 30px;
-
+                    color: rgb(234, 239, 199);
 
                 }
 
                 h5 {
                     height: 20px;
+                    color: azure;
+                }
+
+                h7 {
+                    height: 20px;
+                    color: azure;
                 }
 
                 p {
                     overflow-y: scroll;
                     height: 70px;
                     padding: 4px;
-                    color: rgb(211, 126, 15);
+                    color: rgb(196, 251, 176);
                 }
 
                 button {
@@ -88,7 +119,7 @@ body {
                     font-size: 14px;
                     color: aliceblue;
                     font-weight: 600;
-                    background-color: rgb(89, 15, 15);
+                    background-color: rgb(195, 210, 82);
                 }
             }
         }
@@ -102,9 +133,10 @@ body {
         }
 
     }
-  }
 }
+
+
 footer {
-    background-color: rgb(62, 62, 62);
-    color: white;
+    background-color: rgb(14, 48, 30);
+    color: rgb(237, 240, 230);
 }
