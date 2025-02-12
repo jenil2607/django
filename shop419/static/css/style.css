@@ -18,14 +18,23 @@ body {
             div.container-fluid {
                 height: 100%;
 
+                /* div.collapse navbar-collapse {
+                    navbar-nav {
+                        nav-item {
+                            color: aliceblue;
+                        }
+                    }
+                }
+                .nav-item dropdown {
+
+                } */
+
                 a.navbar-brand {
                     img {
                         height: 100%;
                         background-color: rgb(112, 203, 84);
                         border-radius: 50%;
                     }
-
-                    color: aliceblue;
 
 
                 }
@@ -139,4 +148,5 @@ main {
 footer {
     background-color: rgb(14, 48, 30);
     color: rgb(237, 240, 230);
+    text-align: center;
 }
