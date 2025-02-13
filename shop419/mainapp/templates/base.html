@@ -40,29 +40,32 @@
                         <li class="nav-item">
                             <a class="nav-link {% if current_page == 'about' %}border disabled{% else %}active{% endif %}" href="{% url 'aboutpage' %}">About</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">Sing in</a>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sing up</a>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a> -->
+                            <a class="nav-link {% if current_page == 'sing in' %}border disabled{% else %}active{% endif %}" href="{% url 'signin' %}">Sing in</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_page == 'signup' %}border disabled{% else %}active{% endif %}" href="{% url 'signup' %}">register</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="nav-link">Logout</button>
+                            </form>
+                          </li>
+                        </ul>
+                        
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Log in
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Sing in</a></li>
+                                <li><a class="dropdown-item" href="{% url 'signin' %}">Sing in</a></li>
                                 <li><a class="dropdown-item" href="#">Sing up</a></li>
-                                <li><a class="dropdown-item" href="#">Ragistration</a></li>
+                                <li><a class="dropdown-item" href="{% url 'signup' %}">Ragistr</a></li>
                             </ul>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                          </li>
-                        </ul>
-                        <form class="d-flex" role="search">
+                        </li> -->
+                        <!-- <form class="d-flex" role="search">
                           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit">Search</button>
                         </form> -->
