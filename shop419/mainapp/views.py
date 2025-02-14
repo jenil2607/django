@@ -7,6 +7,10 @@ from django.template import loader
 # to help return HTTP response to the user for any given request 
 from django.http import HttpResponse
 
+# importing the generic calss based viwes for CRUD operations
+
+from django.views.generic import CreateView, UpdateView, DeleteView
+
 # Create your views here.
 def homeView(request):
     products = Product.objects.all()
