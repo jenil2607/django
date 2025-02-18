@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ prod.name }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6 ">
+        <img src="{{prod.pic.url}}" class="w-100 h-100" alt="">
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <h1>{{ prod.name }}</h1>
+            <p>Rs.{{ prod.price }}</p>
+        </div>
+        <div class="row">
+            {% if user.is_staff %}
+            <a href="{% url 'editproduct' prod.pk %}" class="btn btn-secondary">Edit Product</a>
+            <a href="{% url 'delproduct' prod.pk %}" class="btn btn-danger">Delete Product</a>
+            {% else %}
+            <a href="" class="btn btn-secondary">Add to Cart</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@ body {
 
                 a.navbar-brand {
                     color: rgb(234, 239, 199);
-                    
+
                     img {
                         height: 100%;
                         background-color: rgb(112, 203, 84);
@@ -31,7 +31,7 @@ body {
                 }
 
                 div.collapse {
-                    
+
                     ul.navbar-nav {
                         li.nav-item {
                             button.nav-link {
@@ -91,11 +91,14 @@ main {
                 height: 50%;
                 text-align: center;
 
+
                 h3 {
                     margin-top: 1px;
                     height: 30px;
-                    color: rgb(234, 239, 199);
 
+                    a {
+                        color: rgb(234, 239, 199);
+                    }
                 }
 
                 h5 {
