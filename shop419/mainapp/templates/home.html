@@ -22,7 +22,17 @@
             <p>
                 {{product.desc}}
             </p>
-            <button>Add to cart</button>
+            <div>
+                {% if user.is_staff %}
+                <a href="{% url 'prod_details' product.id %}">
+                    <button type="button">Edit product</button>
+                </a>
+                {% else %}
+                <a href="{% url 'add_to_cart' product.id %}">
+                    <button type="button">Add to cart</button>
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% endfor %}

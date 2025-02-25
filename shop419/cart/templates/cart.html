@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{user}}'s Cart
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <table class="table" data-bs-theme="dark">
+        <thead >
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th></th>
+        </thead>
+        <tbody>
+        {% for item in cart_items %}
+            <tr>
+                <td><img src="{{item.product.pic.url}}" height="20px" alt=""></td>
+                <td>
+                    <a href="{% url 'prod_details' item.product.id %}">
+                    {{item.product.name}}
+                    </a>
+                </td>
+                
+                <td>{{item.product.price}}</td>                
+                <td>{{item.quantity}}</td>
+                <td>{{item.get_total_price}}</td>
+                <td><a href="" class="btn btn-danger">Remove From Cart</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+  
+    </table>
+</div>
+
+{% endblock %}
