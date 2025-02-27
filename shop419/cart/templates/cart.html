@@ -8,34 +8,73 @@
 {% block content %}
 
 <div class="container-fluid">
-    <table class="table" data-bs-theme="dark">
-        <thead >
-            <th></th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th></th>
+    {% if cart_items %}
+
+    <table class="table">
+        <thead>
+            <th>
+    
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Sub Total
+            </th>
+            <th>
+    
+            </th>
         </thead>
         <tbody>
-        {% for item in cart_items %}
-            <tr>
-                <td><img src="{{item.product.pic.url}}" height="20px" alt=""></td>
-                <td>
-                    <a href="{% url 'prod_details' item.product.id %}">
-                    {{item.product.name}}
-                    </a>
+            {% for item in cart_items %}
+            <tr class="h-10" id="cart-item-{{item.id}}">
+                <td class="w-auto">
+                    {% if item.product.pic %}
+                        <img src="{{item.product.pic.url}}" height="20px" alt="An image of {{item.product.name}}">
+                    {% endif %}
                 </td>
-                
-                <td>{{item.product.price}}</td>                
-                <td>{{item.quantity}}</td>
-                <td>{{item.get_total_price}}</td>
-                <td><a href="" class="btn btn-danger">Remove From Cart</a></td>
+                <td>
+                    <a href="{% url 'prod_details' item.product.id %}">{{item.product.name }}</a>
+                </td>
+                <td>
+                    {{item.product.price}}
+                </td>
+                <td class="grid">
+                    <div class="row w-100">            
+                    <button onclick="updateCart('{% url 'rem_quantity' item.id %}', {{ item.id }}, false, '{{ csrf_token }}')" class="btn btn-outline-secondary col align-middle">
+                        -
+                    </button>
+                        <p id="quantity-{{ item.id }}" class="col align-middle text-center">{{item.quantity}}</p>
+                    <button onclick="updateCart('{% url 'add_quantity' item.id %}', {{ item.id }}, true, '{{ csrf_token }}')" class="btn btn-outline-secondary col align-middle">+</button>
+                    </div>
+                </td>
+                <td id="total-price-{{ item.id }}">
+                    {{item.get_total_price}}
+                </td>
+                <td>
+                    <a href="{% url 'rem_from_cart' item.id %}" class="btn btn-danger">Remove from Cart</a>
+                </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
+            <tr>
+                <th colspan="4" class="text-center text-warning bg-dark">Total</th>
+                <td class="bg-secondary"><strong>Rs.<span id="overall-total">{{ total_price }}</span></strong></td>
+                <td><a href="" class="btn btn-primary">Place Your Order</a></td>
+            </tr>
         </tbody>
-  
     </table>
+    
+    {% else %}
+    Cart is Empty!!!
+    {% endif %}
+    <a href="{% url 'homepage' %}" class="btn btn-primary">Shop More!!!</a>
 </div>
-
 {% endblock %}
+
+

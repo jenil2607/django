@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from mainapp.models import Product
 from .models import CartItem
 from django.contrib.auth.decorators import login_required
+# implementing AJAX to update cart item quantity without refresh
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -35,3 +38,33 @@ def viewCart(request):
         'total_price' : total_price
     }
     return render( request, template, context)
+
+
+# D
+
+def RemFromCart(request, cart_item_id):
+    this_cart_item = CartItem.objects.get(id = cart_item_id)
+    this_cart_item.delete()
+    return redirect('view_cart')
+
+# function based views for implementing the API endpoints for cart quantity updations
+@login_required
+def addQuantity(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
+    cart_item.quantity += 1
+    cart_item.save()
+    overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
+    return JsonResponse({'quantity': cart_item.quantity, 'total_price': cart_item.get_total_price(), 'overall_total': overall_total})
+
+@login_required
+def remQuantity(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+        overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
+        return JsonResponse({'quantity': cart_item.quantity, 'total_price': cart_item.get_total_price(), 'overall_total': overall_total})
+    else:
+        cart_item.delete()
+        overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
+        return JsonResponse({'quantity': 0, 'total_price': 0, 'overall_total': overall_total})
