@@ -10,7 +10,7 @@
 <div class="container-fluid">
     {% if cart_items %}
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <th>
     
@@ -65,7 +65,7 @@
             <tr>
                 <th colspan="4" class="text-center text-warning bg-dark">Total</th>
                 <td class="bg-secondary"><strong>Rs.<span id="overall-total">{{ total_price }}</span></strong></td>
-                <td><a href="" class="btn btn-primary">Place Your Order</a></td>
+                <td><a href="{% url 'create_order' %}" class="btn btn-primary">Place Your Order</a></td>
             </tr>
         </tbody>
     </table>
@@ -73,7 +73,9 @@
     {% else %}
     Cart is Empty!!!
     {% endif %}
-    <a href="{% url 'homepage' %}" class="btn btn-primary">Shop More!!!</a>
+    <div class="text-center">
+        <a href="{% url 'homepage' %}" class="btn btn-primary">Shop More!!!</a>
+    </div>
 </div>
 {% endblock %}
 

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'cart',
     'orders',
-    'payment',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +124,18 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+# Razorpay configs
+
+RAZORPAY_KEY_ID = "rzp_test_Xj1NEoXdBtU8kz"  # Replace with your Key ID
+RAZORPAY_KEY_SECRET = "CQBUSWnTHck3q2CspDgq3Cdy"
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://api.razorpay.com',  # Add Razorpay's domain
+]
+TIME_ZONE = 'Asia/Kolkata'  # Change to your local time zone
+USE_TZ = True
 
 
 # configration the user-uploaded media storage location
